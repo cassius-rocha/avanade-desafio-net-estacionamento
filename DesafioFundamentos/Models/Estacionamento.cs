@@ -1,4 +1,5 @@
 using System;
+using System.Globalization;
 using System.Text.RegularExpressions;
 
 namespace DesafioFundamentos.Models
@@ -9,6 +10,7 @@ namespace DesafioFundamentos.Models
         private decimal precoPorHora = precoPorHora;
         private List<string> veiculos = [];
 
+        // Método para validar a placa
         private bool ValidarPlaca(string placa)
         {
             if (string.IsNullOrWhiteSpace(placa)) return false; 
@@ -29,7 +31,7 @@ namespace DesafioFundamentos.Models
         }
 
         // Método para validar quantidade de horas estacionadas e retornar o valor total
-        private decimal QuantidadeDeHoras(string horasString)
+        private string QuantidadeDeHoras(string horasString)
         {            
             int horas = 0;
             int tentativas = 0;
@@ -51,7 +53,7 @@ namespace DesafioFundamentos.Models
                 }                
             }
 
-            return valorTotal;
+            return valorTotal.ToString("C", CultureInfo.CurrentCulture);
         }
 
         public void AdicionarVeiculo()
@@ -84,11 +86,11 @@ namespace DesafioFundamentos.Models
                     Console.WriteLine("Digite a quantidade de horas que o veículo permaneceu estacionado:");
                     string horasString = Console.ReadLine();
 
-                    decimal valorTotal = QuantidadeDeHoras(horasString);                    
+                    string valorTotal = QuantidadeDeHoras(horasString);                    
                     
                     veiculos.Remove(placa);
 
-                    Console.WriteLine($"O veículo {placa.ToUpper()} foi removido e o preço total foi de: R$ {valorTotal}");
+                    Console.WriteLine($"O veículo {placa.ToUpper()} foi removido e o preço total foi de: {valorTotal}");
                 }
                 else Console.WriteLine("Desculpe, esse veículo não está estacionado aqui. Confira se digitou a placa corretamente");   
             }
