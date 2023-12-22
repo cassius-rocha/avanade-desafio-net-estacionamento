@@ -1,3 +1,6 @@
+using System;
+using System.Text.RegularExpressions;
+
 namespace DesafioFundamentos.Models
 {
     public class Estacionamento(decimal precoInicial, decimal precoPorHora)
@@ -6,11 +9,63 @@ namespace DesafioFundamentos.Models
         private decimal precoPorHora = precoPorHora;
         private List<string> veiculos = [];
 
-        public void AdicionarVeiculo()
+        private bool ValidarPlaca(string placa)
         {
-            // TODO: Pedir para o usuário digitar uma placa (ReadLine) e adicionar na lista "veiculos"
-            Console.WriteLine("Digite a placa do veículo para estacionar:");
-            veiculos.Add(Console.ReadLine());
+            if (string.IsNullOrWhiteSpace(placa)) return false; 
+            
+            if (placa.Length != 7) return false;
+
+            if (char.IsLetter(placa, 4))
+            {
+                var padraoMercosul = new Regex(@"[a-zA-Z]{3}\d[a-zA-Z]\d{2}");
+                return padraoMercosul.IsMatch(placa);
+            }
+            else if(char.IsDigit(placa, 4))
+            {
+                var padraoBrasil = new Regex(@"[a-zA-Z]{3}\d{4}");
+                return padraoBrasil.IsMatch(placa);
+            }
+            else return false;
+        }
+
+        // Método para validar quantidade de horas estacionadas e retornar o valor total
+        private decimal QuantidadeDeHoras(string horasString)
+        {            
+            int horas = 0;
+            int tentativas = 0;
+            decimal valorTotal = 0;
+
+            // conversão e validação da quantidade de horas
+            while (true)
+            {
+                if(!int.TryParse(horasString, out horas) || horas <= 0)
+                {
+                    Console.WriteLine("Valor inválido. Tente novamente."); 
+                    horasString = Console.ReadLine(); 
+                    tentativas ++;                  
+                }
+                else
+                {
+                    valorTotal = (horas * precoPorHora) + precoInicial;
+                    break;                   
+                }                
+            }
+
+            return valorTotal;
+        }
+
+        public void AdicionarVeiculo()
+        {            
+            string placa = "";
+
+            Console.WriteLine("Digite a placa do veículo. Apenas números e letras:");
+            placa = Console.ReadLine();
+
+            if(ValidarPlaca(placa))
+            {
+                veiculos.Add(placa);
+            }
+            else Console.WriteLine("Placa inválida, tente de novo.");
         }
 
         public void RemoverVeiculo()
@@ -19,35 +74,25 @@ namespace DesafioFundamentos.Models
           
             Console.WriteLine("Digite a placa do veículo para remover:");
             placa = Console.ReadLine();
-           
-            // Verifica se o veículo existe
-            if (veiculos.Any(x => x.ToUpper() == placa.ToUpper()))
+
+            // Validação da placa
+            if(ValidarPlaca(placa))
             {
-                int horas = 0;
-                decimal valorTotal = 0;
-
-                Console.WriteLine("Digite a quantidade de horas que o veículo permaneceu estacionado:");
-                bool horasValidas = false;
-
-                // conversão e validação da quantidade de horas
-                while (!horasValidas)
+                // Verifica se o veículo existe
+                if (veiculos.Any(x => x == placa))
                 {
-                    if(!int.TryParse(Console.ReadLine(), out horas))
-                    {
-                        Console.WriteLine("Valor inválido. Tente novamente.");                    
-                    }
-                    else
-                    {
-                        valorTotal = (horas * precoPorHora) + precoInicial;
-                        horasValidas = true;
-                    }
-                }
-                
-                veiculos.Remove(placa);
+                    Console.WriteLine("Digite a quantidade de horas que o veículo permaneceu estacionado:");
+                    string horasString = Console.ReadLine();
 
-                Console.WriteLine($"O veículo {placa} foi removido e o preço total foi de: R$ {valorTotal}");
+                    decimal valorTotal = QuantidadeDeHoras(horasString);                    
+                    
+                    veiculos.Remove(placa);
+
+                    Console.WriteLine($"O veículo {placa.ToUpper()} foi removido e o preço total foi de: R$ {valorTotal}");
+                }
+                else Console.WriteLine("Desculpe, esse veículo não está estacionado aqui. Confira se digitou a placa corretamente");   
             }
-            else Console.WriteLine("Desculpe, esse veículo não está estacionado aqui. Confira se digitou a placa corretamente");            
+            else Console.WriteLine("Placa inválida, tente de novo.");                
         }
 
         public void ListarVeiculos()
@@ -58,7 +103,7 @@ namespace DesafioFundamentos.Models
                 Console.WriteLine("Os veículos estacionados são:");
                 foreach(string veiculo in veiculos)
                 {
-                    Console.WriteLine(veiculo);
+                    Console.WriteLine(veiculo.ToUpper());
                 }                
             }
             else Console.WriteLine("Não há veículos estacionados.");            
