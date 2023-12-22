@@ -21,7 +21,7 @@ A partir de um código incompleto, foram pedidas as seguintes tarefas:
 
 Além das tarefas listadas acima, buscando melhorias mas sem sair do escopo, decidi implementar o seguinte:
 - Método para validação da placa do veículo, utilizando expressões regulares;
-- Método para validação da entrada da quantidade de horas totais estacionadas, o qual retorna o valor total, em moeda corrente;
+- Método para validação da entrada da quantidade de horas totais estacionadas, o qual retorna o valor total, em moeda corrente.
 
 ## Conclusão
 Além da oportunidade de colocar em prática fundamentos de C# em desenvolvimento .NET, noções de Programação Orientada a Objetos, do contato prático com o Git, este projeto foi uma grande possibilidade de buscar soluções em autonomia. Por exemplo, ao me propor implementar a validação da placa do veículo, pude fazer um estudo introdutório sobre RegEx e já aplicá-lo na prática. Destaco também que a criação de métodos me fez perceber como as aulas de funções em C, praticadas ao longo do ano no curso de Tecnologia em Análise e Desenvovimento de sistemas, foram fundamentais para a compreensão do funcionamento das classes em C# e seus métodos. E tão relevante como identificar os pontos positivos, foi perceber minhas limitações, que são tantas que não seriam listáveis. Isso se torna um forte combustível para seguir nos estudos.
