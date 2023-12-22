@@ -1,6 +1,6 @@
 # Sistema para um Estacionamento - C# - .NET
 
-## Desafio de projeto - Decola Techa Avanade 2024
+## Desafio de projeto - Decola Tech Avanade 2024
 Projeto desenvolvido como parte do bootcamp Decola Tech 2024, parceria DIO e Avanade, focado em desenvolvimento .NET.
 Nesta etapa da trilha, são propostos alguns desafios de projetos, em que os participantes recebem tarefas específicas para aplicar os conceitos estudados nas aulas. No caso, este foi o primeiro dos desafios. A seguir, faço uma descrição das demandas solicitadas e o que foi entregue.
 
