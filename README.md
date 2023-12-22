@@ -1,37 +1,27 @@
-## Sistema para um Estacionamento - C# - .NET
+# Sistema para um Estacionamento - C# - .NET
 
-## Desafio de projeto
-Para este desafio, você precisará usar seus conhecimentos adquiridos no módulo de fundamentos, da trilha .NET da DIO.
+## Desafio de projeto - Decola Techa Avanade 2024
+Projeto desenvolvido como parte do bootcamp Decola Tech 2024, parceria DIO e Avanade, focado em desenvolvimento .NET.
+Nesta etapa da trilha, são propostos alguns desafios de projetos, em que os participantes recebem tarefas específicas para aplicar os conceitos estudados nas aulas. No caso, este foi o primeiro dos desafios. A seguir, faço uma descrição das demandas solicitadas e o que foi entregue.
 
-## Contexto
-Você foi contratado para construir um sistema para um estacionamento, que será usado para gerenciar os veículos estacionados e realizar suas operações, como por exemplo adicionar um veículo, remover um veículo (e exibir o valor cobrado durante o período) e listar os veículos.
+## Descrição do projeto
+Sistema interativo de cadastro de veículos em um estacionamento hipotético. 
+Ações do programa:
+- Cadastrar veículo;
+- Remover veículo e calcular o preço final a ser pago;
+- Listar veículos;
+- Encerrar programa.
 
-## Proposta
-Você precisará construir uma classe chamada "Estacionamento", conforme o diagrama abaixo:
-![Diagrama de classe estacionamento](diagrama_classe_estacionamento.png)
+A partir de um código incompleto, foram pedidas as seguintes tarefas:
+- Leitura de entrada de usuário com o número da placa e adição da placa a uma lista;
+- Leitura de entrada de usuário com a quantidade total de horas estacionadas;
+- Cálculo do valor total;
+- Remoção de placa da lista;
+- Estrutura de repetição para exibição da lista de veículos estacionados.
 
-A classe contém três variáveis, sendo:
+Além das tarefas listadas acima, buscando melhorias mas sem sair do escopo, decidi implementar o seguinte:
+- Método para validação da placa do veículo, utilizando expressões regulares;
+- Método para validação da entrada da quantidade de horas totais estacionadas, o qual retorna o valor total, em moeda corrente;
 
-**precoInicial**: Tipo decimal. É o preço cobrado para deixar seu veículo estacionado.
-
-**precoPorHora**: Tipo decimal. É o preço por hora que o veículo permanecer estacionado.
-
-**veiculos**: É uma lista de string, representando uma coleção de veículos estacionados. Contém apenas a placa do veículo.
-
-A classe contém três métodos, sendo:
-
-**AdicionarVeiculo**: Método responsável por receber uma placa digitada pelo usuário e guardar na variável **veiculos**.
-
-**RemoverVeiculo**: Método responsável por verificar se um determinado veículo está estacionado, e caso positivo, irá pedir a quantidade de horas que ele permaneceu no estacionamento. Após isso, realiza o seguinte cálculo: **precoInicial** * **precoPorHora**, exibindo para o usuário.
-
-**ListarVeiculos**: Lista todos os veículos presentes atualmente no estacionamento. Caso não haja nenhum, exibir a mensagem "Não há veículos estacionados".
-
-Por último, deverá ser feito um menu interativo com as seguintes ações implementadas:
-1. Cadastrar veículo
-2. Remover veículo
-3. Listar veículos
-4. Encerrar
-
-
-## Solução
-O código está pela metade, e você deverá dar continuidade obedecendo as regras descritas acima, para que no final, tenhamos um programa funcional. Procure pela palavra comentada "TODO" no código, em seguida, implemente conforme as regras acima.
+## Conclusão
+Além da oportunidade de colocar em prática fundamentos de C# em desenvolvimento .NET, noções de Programação Orientada a Objetos, do contato prático com o Git, este projeto foi uma grande possibilidade de buscar soluções em autonomia. Por exemplo, ao me propor implementar a validação da placa do veículo, pude fazer um estudo introdutório sobre RegEx e já aplicá-lo na prática. Destaco também que a criação de métodos me fez perceber como as aulas de funções em C, praticadas ao longo do ano no curso de Tecnologia em Análise e Desenvovimento de sistemas, foram fundamentais para a compreensão do funcionamento das classes em C# e seus métodos. E tão relevante como identificar os pontos positivos, foi perceber minhas limitações, que são tantas que não seriam listáveis. Isso se torna um forte combustível para seguir nos estudos.
