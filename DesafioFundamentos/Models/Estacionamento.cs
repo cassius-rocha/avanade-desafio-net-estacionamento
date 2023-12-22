@@ -34,7 +34,6 @@ namespace DesafioFundamentos.Models
         private string QuantidadeDeHoras(string horasString)
         {            
             int horas = 0;
-            int tentativas = 0;
             decimal valorTotal = 0;
 
             // conversão e validação da quantidade de horas
@@ -43,8 +42,7 @@ namespace DesafioFundamentos.Models
                 if(!int.TryParse(horasString, out horas) || horas <= 0)
                 {
                     Console.WriteLine("Valor inválido. Tente novamente."); 
-                    horasString = Console.ReadLine(); 
-                    tentativas ++;                  
+                    horasString = Console.ReadLine();                   
                 }
                 else
                 {
@@ -56,6 +54,7 @@ namespace DesafioFundamentos.Models
             return valorTotal.ToString("C", CultureInfo.CurrentCulture);
         }
 
+        //Método para adicionar veículo
         public void AdicionarVeiculo()
         {            
             string placa = "";
@@ -70,6 +69,7 @@ namespace DesafioFundamentos.Models
             else Console.WriteLine("Placa inválida, tente de novo.");
         }
 
+        //Método para remover veículo
         public void RemoverVeiculo()
         {
             string placa = "";
@@ -86,6 +86,7 @@ namespace DesafioFundamentos.Models
                     Console.WriteLine("Digite a quantidade de horas que o veículo permaneceu estacionado:");
                     string horasString = Console.ReadLine();
 
+                    // Validação das horas
                     string valorTotal = QuantidadeDeHoras(horasString);                    
                     
                     veiculos.Remove(placa);
